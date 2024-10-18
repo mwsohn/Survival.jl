@@ -185,5 +185,5 @@ function logrank(df, event, by)
     dof = (length(o) - 1) * (length(e) - 1)
     pval = ccdf(Chisq(dof), chi2)
 
-    return (o, e, size(df2,1), chi2, dof, pval)
+    return (o, e, size(df,1), chi2, dof, pval)
 end
