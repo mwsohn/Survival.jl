@@ -8,6 +8,7 @@ using StatsAPI
 using StatsBase
 using StatsModels
 using Tables
+using Plots
 
 export
     EventTime,
