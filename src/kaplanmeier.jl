@@ -126,22 +126,21 @@ end
 
 Performs log-rank test for the groups `by`.
 """
-function logrank(df2, event, by)
+function logrank(df, event, by)
 
     # number of groups
     # ba = completecases(df[!,[event,by]])
     # df2 = df[ba,:]
-    groups = sort(unique(df2[!,by]))
+    groups = sort(unique(df[!,by]))
     n_groups = length(groups)
 
     # perform Kaplan-Meier analysis
     km = Vector{KaplanMeier{Float64, Int64}}(undef,n_groups)
     times = zeros(Int64,n_groups)
 
-    for (i,v) in 1:n_groups
-        km[i] = fit(KaplanMeier, df2[ df2[!,by] .== v, event])
+    for (i,v) in enumerate(groups)
+        km[i] = fit(KaplanMeier, df[ df[!,by] .== v, event])
         times[i] = km[i].events.time[end]
-
     end
 
     # lengths
@@ -154,7 +153,7 @@ function logrank(df2, event, by)
     end
 
     # N at risk
-    atrisk = zeros(Int64, 2, ntimes)
+    atrisk = zeros(Int64, n_groups, ntimes)
     for i in 1:n_groups
         atrisk[i, 1] = km[i].events.natrisk[1]
         
