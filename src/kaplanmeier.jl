@@ -69,7 +69,7 @@ StatsAPI.fit(::Type{KaplanMeier}, ets)
 
 Plots Kaplan-Meier estimates.
 """
-function kaplanmeier(df::AbstractDataFrame, event::EventTime; by::Symbol=nothing)
+function kaplanmeier(df, event::EventTime; by::Symbol=nothing)
 
     plt = nothing
     if by == nothing
