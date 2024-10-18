@@ -126,11 +126,11 @@ end
 
 Performs log-rank test for the groups `by`.
 """
-function logrank(df, event, by)
+function logrank(df2, event, by)
 
     # number of groups
     # ba = completecases(df[!,[event,by]])
-    # df2 = df [ba,:]
+    # df2 = df[ba,:]
     groups = sort(unique(df2[!,by]))
     n_groups = length(groups)
 
