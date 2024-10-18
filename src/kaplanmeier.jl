@@ -106,14 +106,14 @@ function kaplanmeier(df, event::EventTime; by::Symbol=nothing)
 end
 
 
-struct LogRank
-    observed::Vector{Int64}()
-    expected::Vector{Float64}()
-    nobs::Int64
-    dof::Int64
-    chi2::Float64
-    pvalue::Float64
-end
+# struct LogRank
+#     observed::Vector{Int64}()
+#     expected::Vector{Float64}()
+#     nobs::Int64
+#     dof::Int64
+#     chi2::Float64
+#     pvalue::Float64
+# end
 
 # function Base.show(io::IO, val::LogRank)
 #     show(io, ev.time)
